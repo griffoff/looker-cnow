@@ -9,7 +9,7 @@ explore: fivetran_audit {}
 
 explore: assignmentitemresults {
   join: assignmentresults {
-    sql_on: ${assignmentitemresults.assignmentresultsid} = ${assignmentitemresults.id} ;;
+    sql_on: ${assignmentitemresults.assignmentresultsid} = ${assignmentresults.id} ;;
     relationship: many_to_one
   }
   join: assignments {
