@@ -21,5 +21,3 @@ explore: assignmentitemresults {
     relationship: many_to_one
   }
 }
-
-explore: sat_take{}
