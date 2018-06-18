@@ -2,7 +2,7 @@ view: hub_book {
 
   dimension: book {
     type: string
-    sql: abbr.CNOWSQLCOV3_ILRNMINDTAP ;;
+    sql: CNOWSQLCOV3_ILRNMINDTAP.booklist.abbr ;;
   }
 measure: count {
   type: count_distinct
