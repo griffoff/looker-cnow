@@ -2,7 +2,7 @@ view: hub_book {
 
   dimension: book {
     type: string
-    sql: (select distinct abbr from cnow.CNOWSQLCOV3_ILRNMINDTAP where abbr is not null and abbr != '') ;;
+    sql: abbr.CNOWSQLCOV3_ILRNMINDTAP) ;;
   }
 
  #
