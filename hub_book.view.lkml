@@ -1,81 +1,53 @@
 view: hub_book {
   sql_table_name: CNOWSQLCOV3_ILRNMINDTAP.BOOKLIST ;;
 
+  dimension: _fivetran_deleted {
+    type: yesno
+    sql: ${TABLE}."_FIVETRAN_DELETED" ;;
+  }
+
+  dimension_group: _fivetran_synced {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."_FIVETRAN_SYNCED" ;;
+  }
+
   dimension: book {
     type: string
-    sql: ${TABLE}.abbr ;;
+    sql: ${TABLE}."ABBR" ;;
+  }
+
+
+  dimension: discipline {
+    type: string
+    sql: ${TABLE}."DISCIPLINE" ;;
+  }
+
+  dimension: isbn {
+    type: string
+    sql: ${TABLE}."ISBN" ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: ${TABLE}."NAME" ;;
+  }
+
+  dimension: product {
+    type: string
+    sql: ${TABLE}."PRODUCT" ;;
   }
 
   measure: count {
-    type: count_distinct
+    type: count
     drill_fields: [book]
   }
- #
-  # # You can specify the table name if it's different from the view name:
-  # sql_table_name: my_schema_name.tester ;;
-  #
-  # # Define your dimensions and measures here, like this:
-  # dimension: user_id {
-  #   description: "Unique ID for each user that has ordered"
-  #   type: number
-  #   sql: ${TABLE}.user_id ;;
-  # }
-  #
-  # dimension: lifetime_orders {
-  #   description: "The total number of orders for each user"
-  #   type: number
-  #   sql: ${TABLE}.lifetime_orders ;;
-  # }
-  #
-  # dimension_group: most_recent_purchase {
-  #   description: "The date when each user last ordered"
-  #   type: time
-  #   timeframes: [date, week, month, year]
-  #   sql: ${TABLE}.most_recent_purchase_at ;;
-  # }
-  #
-  # measure: total_lifetime_orders {
-  #   description: "Use this for counting lifetime orders across many users"
-  #   type: sum
-  #   sql: ${lifetime_orders} ;;
-  # }
 }
-
-# view: hub_book {
-#   # Or, you could make this view a derived table, like this:
-#   derived_table: {
-#     sql: SELECT
-#         user_id as user_id
-#         , COUNT(*) as lifetime_orders
-#         , MAX(orders.created_at) as most_recent_purchase_at
-#       FROM orders
-#       GROUP BY user_id
-#       ;;
-#   }
-#
-#   # Define your dimensions and measures here, like this:
-#   dimension: user_id {
-#     description: "Unique ID for each user that has ordered"
-#     type: number
-#     sql: ${TABLE}.user_id ;;
-#   }
-#
-#   dimension: lifetime_orders {
-#     description: "The total number of orders for each user"
-#     type: number
-#     sql: ${TABLE}.lifetime_orders ;;
-#   }
-#
-#   dimension_group: most_recent_purchase {
-#     description: "The date when each user last ordered"
-#     type: time
-#     timeframes: [date, week, month, year]
-#     sql: ${TABLE}.most_recent_purchase_at ;;
-#   }
-#
-#   measure: total_lifetime_orders {
-#     description: "Use this for counting lifetime orders across many users"
-#     type: sum
-#     sql: ${lifetime_orders} ;;
-#   }
-# }
