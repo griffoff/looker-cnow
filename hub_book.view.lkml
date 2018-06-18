@@ -1,13 +1,15 @@
 view: hub_book {
+  sql_table_name: CNOWSQLCOV3_ILRNMINDTAP.BOOKLIST ;;
 
   dimension: book {
     type: string
-    sql: CNOWSQLCOV3_ILRNMINDTAP.booklist.abbr ;;
+    sql: ${TABLE}.abbr ;;
   }
-measure: count {
-  type: count_distinct
-  drill_fields: [book]
-}
+
+  measure: count {
+    type: count_distinct
+    drill_fields: [book]
+  }
  #
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
