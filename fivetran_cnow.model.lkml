@@ -22,4 +22,4 @@ explore: assignmentitemresults {
   }
 }
 
-explore: hub_book{}
+explore: sat_take{}
