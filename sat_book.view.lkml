@@ -1,4 +1,4 @@
-view: hub_book {
+view: sat_book {
   sql_table_name: CNOWSQLCOV3_ILRNMINDTAP.BOOKLIST ;;
 
   dimension: _fivetran_deleted {
@@ -28,6 +28,26 @@ view: hub_book {
   dimension: bookhash {
     type: string
     sql: md5(${TABLE}."ABBR") ;;
+  }
+
+  dimension: discipline {
+    type: string
+    sql: ${TABLE}."DISCIPLINE" ;;
+  }
+
+  dimension: isbn {
+    type: string
+    sql: ${TABLE}."ISBN" ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: ${TABLE}."NAME" ;;
+  }
+
+  dimension: product {
+    type: string
+    sql: ${TABLE}."PRODUCT" ;;
   }
 
   measure: count {
