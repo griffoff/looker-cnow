@@ -21,3 +21,4 @@ explore: assignmentitemresults {
     relationship: many_to_one
   }
 }
+explore: hub_book {}
