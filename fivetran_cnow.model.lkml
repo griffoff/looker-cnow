@@ -24,11 +24,11 @@ explore: assignmentitemresults {
 
 #explore: hub_book {}
 
-explore: sat_book {}
+#explore: sat_book {}
 
-explore: hub_book {
-  join: sat_book {
-    sql_on: ${hub_book.bookhash} = ${sat_book.bookhash} ;;
-    relationship: one_to_many
-  }
-}
+#explore: hub_book {
+#  join: sat_book {
+#    sql_on: ${hub_book.bookhash} = ${sat_book.bookhash} ;;
+#    relationship: one_to_many
+#  }
+#}
