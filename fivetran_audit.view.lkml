@@ -16,6 +16,17 @@ view: fivetran_audit {
         select *
         from CNOWSQLCOV3_ILRNMINDTAP.FIVETRAN_AUDIT
       ;;
-    }
 
+      persist_for: "1 hour"
+    }
+dimension: database_name {
+    sql:'CNOW' ;;
   }
+
+  measure: db_rows_updated_or_inserted {
+    label: "CNow"
+    type: number
+    sql: ${rows_updated_or_inserted} ;;
+  }
+
+}
