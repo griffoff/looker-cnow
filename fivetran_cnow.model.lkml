@@ -1,6 +1,6 @@
 include: "*.view.lkml"         # include all views in this project
 
-include: "/core/common.lkml"
+include: "//core/common.lkml"
 
 connection: "snowflake_cnow"
 

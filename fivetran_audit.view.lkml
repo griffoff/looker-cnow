@@ -1,4 +1,5 @@
-include: "/core/fivetran.view.lkml"
+include: "//core/fivetran.view.lkml"
+include: "//core/datagroups.lkml"
 view: fivetran_audit {
   extends: [fivetran_audit_base]
 
@@ -17,7 +18,7 @@ view: fivetran_audit {
         from CNOWSQLCOV3_ILRNMINDTAP.FIVETRAN_AUDIT
       ;;
 
-      persist_for: "1 hour"
+      datagroup_trigger: hourly_refresh
     }
 dimension: database_name {
     sql:'CNOW' ;;
